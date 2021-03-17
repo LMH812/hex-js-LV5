@@ -4,7 +4,7 @@ axios.get(url)
 .then(response => {
     allData = response.data.data;
     rendon();
-    travel();
+    traveled(allData);
 })
 let data = [];
 function rendon() {
@@ -18,112 +18,55 @@ function rendon() {
     }
     // travel();
 }
-$('#locationSearch').change((e) => {
-    let selectVal = e.target.value;
-    let arr = [];
-    console.log(selectVal);
-    let total = '';
+function traveled(e) {
     let travel = '';
-    allData.forEach((item) => {
-        if (selectVal == item.area) {
-            arr.push(item);
-            total += `本次搜尋共 ${arr.length} 筆資料`
-            travel += 
-            `
-            <div class="card">
-                <div class="card-banner">
-                    <img src="${item.imgUrl}" alt="">
-                    <span>${item.area}</span>
-                </div>
-                <div class="card-body">
-                    <span class="score">${item.rate}</span>
-                    <div class="card-header">
-                        <h2>${item.name}</h2>
-                    </div>
-                    <div class="card-txt">
-                        ${item.description}
-                    </div>
-                    <div class="card-footer">
-                        <p class="remaining">
-                            <ion-icon name="alert-circle"></ion-icon>
-                            剩下最後 ${item.group} 組
-                        </p>
-                        <p class="price">
-                            <span>TWD</span>
-                            ${item.price}
-                        </p>
-                    </div>
-                </div>
-            </div>
-            `
-        } else if (selectVal == '地區搜尋') {
-            travel += 
-            `
-            <div class="card">
-                <div class="card-banner">
-                    <img src="${item.imgUrl}" alt="">
-                    <span>${item.area}</span>
-                </div>
-                <div class="card-body">
-                    <span class="score">${item.rate}</span>
-                    <div class="card-header">
-                        <h2>${item.name}</h2>
-                    </div>
-                    <div class="card-txt">
-                        ${item.description}
-                    </div>
-                    <div class="card-footer">
-                        <p class="remaining">
-                            <ion-icon name="alert-circle"></ion-icon>
-                            剩下最後 ${item.group} 組
-                        </p>
-                        <p class="price">
-                            <span>TWD</span>
-                            ${item.price}
-                        </p>
-                    </div>
-                </div>
-            </div>
-            `
-        }
-    $('.location').html(travel);
-    $('.total').html(total);
-    })
-})
-function travel() {
-    let travel = '';
-    for(let i = 0; i < allData.length; i++) {
+    let total = `本次搜尋共 ${e.length} 筆資料`;
+    for(let i = 0; i < e.length; i++) {
         travel += 
         `
         <div class="card">
             <div class="card-banner">
-                <img src="${allData[i].imgUrl}" alt="">
-                <span>${allData[i].area}</span>
+                <img src="${e[i].imgUrl}" alt="">
+                <span>${e[i].area}</span>
             </div>
             <div class="card-body">
-                <span class="score">${allData[i].rate}</span>
+                <span class="score">${e[i].rate}</span>
                 <div class="card-header">
-                    <h2>${allData[i].name}</h2>
+                    <h2>${e[i].name}</h2>
                 </div>
                 <div class="card-txt">
-                    ${allData[i].description}
+                    ${e[i].description}
                 </div>
                 <div class="card-footer">
                     <p class="remaining">
                         <ion-icon name="alert-circle"></ion-icon>
-                        剩下最後 ${allData[i].group} 組
+                        剩下最後 ${e[i].group} 組
                     </p>
                     <p class="price">
                         <span>TWD</span>
-                        ${allData[i].price}
+                        ${e[i].price}
                     </p>
                 </div>
             </div>
         </div>
         `
     }
+    $('.total').text(total)
     $('.location').html(travel);
 }
+
+$('#locationSearch').change((e) => {
+    let selectVal = e.target.value;
+    let arr = [];
+    allData.forEach(item => {
+        if (selectVal == item.area) {
+            arr.push(item)
+        } else if (selectVal == '地區搜尋') {
+            arr.push(item);
+        }
+    })
+    traveled(arr);
+})
 
 $('.submit').click(()=> {
     let updateData = {};
