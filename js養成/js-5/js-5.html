@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/all.css">
+</head>
+<body>
+    <div class="banner">
+        <div class="left">
+            <img src="../undraw_Traveling_re_weve (1)@2x.png" alt="">
+            <img src="../Let’s Travel !@2x.png" alt="">
+        </div>
+        <div class="right">
+            <h2>
+                <ion-icon name="add-circle-outline"></ion-icon>
+                新增旅遊套票
+            </h2>
+            <div class="form">
+                <div class="form-list">
+                    <label for="ticketName">套票名稱</label>
+                    <input type="text" name="ticketName" id="ticketName" placeholder="請填寫套票名稱">
+                </div>
+                <div class="form-list">
+                    <label for="imgName">圖片網址</label>
+                    <input type="text" name="imgName" id="imgName" placeholder="請填寫圖片網址">
+                </div>
+                <div class="form-list">
+                    <label for="location">景點地區</label>
+                    <select name="location" id="location" placeholder="請選擇景點地區">
+                        <option value="">請選擇景點地區</option>
+                        <option value="高雄">高雄</option>
+                    </select>
+                </div>
+                <div class="form-list">
+                    <label for="ticketPrice">套票金額</label>
+                    <input type="text"name="ticketPrice" id="ticketPrice" placeholder="套票金額">
+                </div>
+                <div class="form-list">
+                    <label for="ticketGroup">套票組數</label>
+                    <input type="text" name="ticketGroup" id="ticketGroup" placeholder="套票組數">
+                </div>
+                <div class="form-list">
+                    <label for="ticketRate">套票星級</label>
+                    <input type="text" name="ticketRate" id="ticketRate" placeholder="套票星級">
+                </div>
+                <div class="form-list">
+                    <label for="ticketDiscription">套票描述</label>
+                    <textarea name="ticketDiscription" id="ticketDiscription" cols="30" rows="10" placeholder="套票描述"></textarea>
+                </div>
+                <div class="form-btn">
+                    <input type="submit" class="submit" value="新增套票">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="container">
+            <div class="header">
+                <select class="custom-select" name="" id="locationSearch" placeholder="地區搜尋">
+                    <option value="地區搜尋">地區搜尋</option>
+                </select>
+                <span class="total"></span>
+            </div>
+            <div class="location">
+            </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script> -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.9.1/axios.js' integrity='sha512-Kg0CewqPNO/ziOJuCq5eyl3P/V6OLz/Lb1I2m+yKS3lHZcGVFN/KOew18rWP+kTsL7haYdaqGjwHQCZrN0heLQ==' crossorigin='anonymous'></script>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <script src="all.js"></script>
+</body>
+</html>
