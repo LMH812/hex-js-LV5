@@ -3,6 +3,7 @@ let allData;
 axios.get(url)
 .then(response => {
     allData = response.data.data;
+    // console.log(response);
     rendon();
     traveled(allData);
 })
@@ -12,15 +13,16 @@ function rendon() {
         data.push(item)
     });
     let location = '';
+    location = `<option value="全部地區">全部地區</option>`;
     for (let i = 0; i < data.length; i++) {
-        location = `<option value="${data[i].area}">${data[i].area}</option>`
-        $('#locationSearch').append(location)
+        location += `<option value="${data[i].area}">${data[i].area}</option>`
     }
+    $('#locationSearch').append(location);
     // travel();
 }
 function traveled(e) {
     let travel = '';
-    let total = `本次搜尋共 ${e.length} 筆資料`;
+    // let total = `本次搜尋共 ${e.length} 筆資料`;
     for(let i = 0; i < e.length; i++) {
         travel += 
         `
@@ -51,24 +53,29 @@ function traveled(e) {
         </div>
         `
     }
-    $('.total').text(total)
+    
     $('.location').html(travel);
 }
-
+//選到地區搜尋 不加total
 $('#locationSearch').change((e) => {
     let selectVal = e.target.value;
     let arr = [];
+    let total = '';
     allData.forEach(item => {
         if (selectVal == item.area) {
-            arr.push(item)
-        } else if (selectVal == '地區搜尋') {
+            arr.push(item);
+        } else if (selectVal == '全部地區' || selectVal == '地區搜尋') {
             arr.push(item);
         }
     })
+    if (selectVal !== '地區搜尋') {
+        total = `本次搜尋共 ${arr.length} 筆資料`;
+    }
+    $('.total').text(total);
     traveled(arr);
 })
 
-$('.submit').click(()=> {
+$('.submit').click(() => {
     let updateData = {};
     updateData.name = $('#ticketName').val();
     updateData.imgUrl = $('#imgName').val();
@@ -78,14 +85,13 @@ $('.submit').click(()=> {
     updateData.rate = $('#ticketRate').val();
     updateData.description = $('#ticketDiscription').val();
     allData.push(updateData);
-    console.log(allData);
-    travel();
-    $('#ticketName').val() = '';
-    $('#imgName').val() = '';
-    $('#location').val() = '';
-    $('#ticketPrice').val() = '';
-    $('#ticketGroup').val() = '';
-    $('#ticketRate').val() = '';
-    $('#ticketDiscription').val() = '';
+    traveled(allData);
+    $('#ticketName').val("");
+    $('#imgName').val("");
+    $('#location').val("");
+    $('#ticketPrice').val("");
+    $('#ticketGroup').val("");
+    $('#ticketRate').val("");
+    $('#ticketDiscription').val("");
 }) 
 

@@ -33,19 +33,21 @@
                     <select name="location" id="location" placeholder="請選擇景點地區">
                         <option value="">請選擇景點地區</option>
                         <option value="高雄">高雄</option>
+                        <option value="台中">台中</option>
+                        <option value="台北">台北</option>
                     </select>
                 </div>
                 <div class="form-list">
                     <label for="ticketPrice">套票金額</label>
-                    <input type="text"name="ticketPrice" id="ticketPrice" placeholder="套票金額">
+                    <input type="number"name="ticketPrice" id="ticketPrice" placeholder="套票金額">
                 </div>
                 <div class="form-list">
                     <label for="ticketGroup">套票組數</label>
-                    <input type="text" name="ticketGroup" id="ticketGroup" placeholder="套票組數">
+                    <input type="number" name="ticketGroup" id="ticketGroup" placeholder="套票組數">
                 </div>
                 <div class="form-list">
                     <label for="ticketRate">套票星級</label>
-                    <input type="text" name="ticketRate" id="ticketRate" placeholder="套票星級">
+                    <input type="number" name="ticketRate" id="ticketRate" placeholder="套票星級">
                 </div>
                 <div class="form-list">
                     <label for="ticketDiscription">套票描述</label>
@@ -61,7 +63,7 @@
         <div class="container">
             <div class="header">
                 <select class="custom-select" name="" id="locationSearch" placeholder="地區搜尋">
-                    <option value="地區搜尋">地區搜尋</option>
+                    <option value="地區搜尋" selected>地區搜尋</option>
                 </select>
                 <span class="total"></span>
             </div>
