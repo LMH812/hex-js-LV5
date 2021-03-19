@@ -18,11 +18,9 @@ function rendon() {
         location += `<option value="${data[i].area}">${data[i].area}</option>`
     }
     $('#locationSearch').append(location);
-    // travel();
 }
 function traveled(e) {
     let travel = '';
-    // let total = `本次搜尋共 ${e.length} 筆資料`;
     for(let i = 0; i < e.length; i++) {
         travel += 
         `
