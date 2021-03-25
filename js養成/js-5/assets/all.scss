@@ -102,14 +102,19 @@ img {
         justify-content: space-between;
     }
     .header {
-        width: 50%;
+        padding: 0 95px;
+        width: 100%;
         display: flex;
-        align-items: center;
+        align-items: flex-start;
+        justify-content: space-between;
         margin-bottom: 40px;
         select {
             max-width: 255px;
         }
     }
+}
+.location-search {
+    width: 50%;
 }
 .card {
     width: 32%;
@@ -172,4 +177,8 @@ img {
             }
         }
     }
+}
+.chart {
+    width: 180px;
+    height: 180px;
 }

@@ -7,6 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/all.css">
+    <link href="../c3-0.7.20/c3.css" rel="stylesheet">
 </head>
 <body>
     <div class="banner">
@@ -62,10 +63,13 @@
     <div class="content">
         <div class="container">
             <div class="header">
-                <select class="custom-select" name="" id="locationSearch" placeholder="地區搜尋">
-                    <option value="地區搜尋" selected>地區搜尋</option>
-                </select>
-                <span class="total"></span>
+                <div class="location-search">
+                    <select class="custom-select" name="" id="locationSearch" placeholder="地區搜尋">
+                        <option value="地區搜尋" selected>地區搜尋</option>
+                    </select>
+                    <span class="total"></span>
+                </div>
+                <div class="chart"></div>
             </div>
             <div class="location">
             </div>
@@ -78,6 +82,8 @@
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <script src="../c3-0.7.20/c3.min.js" charset="utf-8"></script>
+    <script src="../c3-0.7.20/docs/js/d3-5.8.2.min.js"></script>
     <script src="all.js"></script>
 </body>
 </html>

@@ -6,8 +6,13 @@ axios.get(url)
     // console.log(response);
     rendon();
     traveled(allData);
+    chartData();
+})
+.catch(err => {
+    alert('伺服器錯誤，請重新整理');
 })
 let data = [];
+
 function rendon() {
     allData.forEach(item => {
         data.push(item)
@@ -91,5 +96,62 @@ $('.submit').click(() => {
     $('#ticketGroup').val("");
     $('#ticketRate').val("");
     $('#ticketDiscription').val("");
-}) 
-
+})
+// 篩選資料變陣列 [['高雄', 數量],['台中', 數量],['台北', 數量]]
+function chartData() {
+    let chartData = {};
+    allData.forEach(item => {
+        if (chartData[item.area] == undefined) {
+            chartData[item.area] = 1;
+        } else {
+            chartData[item.area] += 1;
+        }
+    })
+    let newChartData = [];
+    let areaTitle = Object.keys(chartData);
+    areaTitle.forEach(item => {
+        let chartColumns = [];
+        chartColumns.push(item)
+        chartColumns.push(chartData[item])
+        newChartData.push(chartColumns)
+    })
+    c3.generate({
+        bindto: '.chart',
+        data: {
+        columns: newChartData,
+        type: 'donut',
+        },
+        donut: {
+            label: {
+                show:false,
+            },
+            title: "套票地區比重",
+            width: 20,
+        }
+    });
+    
+}
+// 寄不出去
+// $('.form-btn').click(function(e) {
+//     e.preventDefault();
+//     let ticketName = $('#ticketName').val().trim()
+//     let imgName= $('#imgName').val().trim()
+//     let location= $('#location').val().trim()
+//     let ticketPrice = $('#ticketPrice').val().trim()
+//     let ticketGroup = $('#ticketGroup').val().trim()
+//     let ticketRate= $('#ticketRate').val().trim()
+//     let ticketDiscription = $('#ticketDiscription').val().trim()
+//     axios({
+//         method: 'post',
+//         url: url,
+//         data: {
+//             name: ticketName,
+//             imgUrl: imgName,
+//             area: location,
+//             description: ticketDiscription,
+//             group: ticketGroup,
+//             price: ticketPrice,
+//             rate: ticketRate,
+//         }
+//     })
+// })
